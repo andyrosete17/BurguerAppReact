@@ -3,12 +3,24 @@ import classes from './Burger.css';
 import BurguerIngredient from './BurgerIngredients/BurgerIngredient';
 
 const burguer = (props) => {
+    let transformedIngredients = Object.keys(props.ingredients)
+        .map(igKey => {
+            return [...Array(props.ingredients[igKey])].map((_, i) => {
+                return <BurguerIngredient key={igKey + i} type={igKey}/>
+            })
+    })
+    .reduce((arr, el) => {
+        return arr.concat(el)
+    }, []);
+
+    if(transformedIngredients.length === 0) {
+        transformedIngredients = <p>Pease start adding ingredients!</p>
+    }
+
     return (
         <div className = {classes.Burger}>
             <BurguerIngredient type="bread-top"/>
-            <BurguerIngredient type="cheese"/>
-            <BurguerIngredient type="salad"/>
-            <BurguerIngredient type="meat"/>
+            {transformedIngredients}
             <BurguerIngredient type="bread-bottom"/>
         </div>
     );
