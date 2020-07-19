@@ -14,7 +14,7 @@ const burguer = (props) => {
     }, []);
 
     if(transformedIngredients.length === 0) {
-        transformedIngredients = <p>Pease start adding ingredients!</p>
+        transformedIngredients = <p>Please start adding ingredients!</p>
     }
 
     return (
