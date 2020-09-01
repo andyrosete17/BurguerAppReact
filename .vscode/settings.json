@@ -1,0 +1,97 @@
+{
+    "fastFolderStructure.structures": [
+        {
+            "name": "TS React Functional Component",
+            "structure": [
+                {
+                    "fileName": "<FFSName>.tsx",
+                    "template": "TS React Functional Component"
+                },
+                {
+                    "fileName": "<FFSName>.css"
+                },
+                {
+                    "fileName": "/__tests__/<FFSName>.test.ts"
+                },
+                {
+                    "fileName": "index.ts",
+                    "template": "Indexfile Import/Export"
+                }
+            ]
+        },
+        {
+            "name": "JS React Functional Component",
+            "structure": [
+                {
+                    "fileName": "<FFSName>.jsx",
+                    "template": "JS React Functional Component"
+                },
+                {
+                    "fileName": "<FFSName>.css"
+                },
+                {
+                    "fileName": "/__tests__/<FFSName>.test.js"
+                },
+                {
+                    "fileName": "index.js",
+                    "template": "Indexfile Import/Export"
+                }
+            ]
+        },
+        {
+            "name": "SideDrawer",
+            "customVariables": [],
+            "structure": [
+                {
+                    "fileName": "NavigationItems/NavigationItem/NavigationItem.css"
+                },
+                {
+                    "fileName": "NavigationItems/NavigationItem/NavigationItem.js"
+                },
+                {
+                    "fileName": "NavigationItems/NavigationItems.css"
+                },
+                {
+                    "fileName": "NavigationItems/NavigationItems.js"
+                },
+                {
+                    "fileName": "Toolbar/ToolBar.css"
+                },
+                {
+                    "fileName": "Toolbar/Toolbar.js"
+                }
+            ]
+        }
+    ],
+    "fastFolderStructure.fileTemplates": {
+        "TS React Functional Component": [
+            "import React from 'react';",
+            "import './<FFSName>.css'",
+            "",
+            "interface <FFSName>Props {",
+            "}",
+            "",
+            "const <FFSName> = (props: <FFSName>Props) => {",
+            "  return <div/>;",
+            "};",
+            "",
+            "export default <FFSName>;"
+        ],
+        "Indexfile Import/Export": [
+            "import <FFSName> from './<FFSName>'",
+            "",
+            "export default <FFSName>;"
+        ],
+        "JS React Functional Component": [
+            "import React from 'react';",
+            "import './<FFSName>.css'",
+            "",
+            "",
+            "const <FFSName> = (props) => {",
+            "  return <div/>;",
+            "};",
+            "",
+            "export default <FFSName>;"
+        ]
+    }
+}
