@@ -1,12 +1,12 @@
 import React from 'react';
 import classes from './Burger.css';
-import BurguerIngredient from './BurgerIngredients/BurgerIngredient';
+import BurgerIngredient from './BurgerIngredients/BurgerIngredient';
 
-const burguer = (props) => {
+const burger = (props) => {
     let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
             return [...Array(props.ingredients[igKey])].map((_, i) => {
-                return <BurguerIngredient key={igKey + i} type={igKey}/>
+                return <BurgerIngredient key={igKey + i} type={igKey}/>
             })
     })
     .reduce((arr, el) => {
@@ -19,11 +19,11 @@ const burguer = (props) => {
 
     return (
         <div className = {classes.Burger}>
-            <BurguerIngredient type="bread-top"/>
+            <BurgerIngredient type="bread-top"/>
             {transformedIngredients}
-            <BurguerIngredient type="bread-bottom"/>
+            <BurgerIngredient type="bread-bottom"/>
         </div>
     );
 };
 
-export default burguer;
+export default burger;
