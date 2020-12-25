@@ -8,7 +8,6 @@ export const authStart = () => {
 };
 
 export const authSuccess = (token, userId) => {
-  console.log(userId);
   return {
     type: actionTypes.AUTH_SUCCESS,
     idToken: token,
@@ -35,7 +34,7 @@ export const checkAuthTimeout = (expirationTime) => {
   return (dispatch) => {
     setTimeout(() => {
       dispatch(logout());
-    },  expirationTime * 1000);
+    }, expirationTime * 1000);
   };
 };
 
@@ -58,19 +57,14 @@ export const auth = (email, password, isSignUp) => {
     axios
       .post(url, authData)
       .then((response) => {
-        console.log(response);
         const expirationDate = new Date(
-          new Date().getTime() + parseInt(response.data.expiresIn) * 1000
+          new Date().getTime() + parseInt(response.data.expiresIn,0) * 1000
         );
-        console.log(new Date());
-        console.log(expirationDate);
 
         localStorage.setItem("token", response.data.idToken);
         localStorage.setItem("expirationDate", expirationDate);
         localStorage.setItem("userId", response.data.localId);
-        console.log('The user id is in auth' + response.data.localId);
         dispatch(authSuccess(response.data.idToken, response.data.localId));
-        console.log(response.data.expiresIn);
         dispatch(checkAuthTimeout(response.data.expiresIn));
       })
       .catch((err) => {
@@ -97,10 +91,11 @@ export const authCheckState = () => {
         dispatch(logout());
       } else {
         const userId = localStorage.getItem("userId");
-        console.log('The user id is in auth' + userId);
         dispatch(authSuccess(token, userId));
         dispatch(
-          checkAuthTimeout((expirationDate.getTime() - new Date().getTime())/1000)
+          checkAuthTimeout(
+            (expirationDate.getTime() - new Date().getTime()) / 1000
+          )
         );
       }
     }
