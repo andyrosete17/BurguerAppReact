@@ -1,46 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import Modal from "../../components/UI/Modal/Modal";
 import Auxi from "../Auxi/Auxi";
+import useHttpErrorHandler from '../../hooks/http-error-handler'
 
 const withErrorHandler = (WrappedComponent, axios) => {
-  return class extends Component {
-    state = {
-      error: null,
-    };
+  return (props) => {
+   const [error, clearError] = useHttpErrorHandler(axios)
 
-    componentWillMount() {
-      this.reqInterceptor = axios.interceptors.request.use((req) => {
-        this.setState({ error: null });
-        return req;
-      });
-
-      this.respInterceptor = axios.interceptors.response.use(
-        (res) => res,
-        (error) => {
-          this.setState({ error: error });
-        }
-      );
-    }
-
-    componentWillUnmount () {
-       axios.interceptors.request.eject(this.reqInterceptor);
-       axios.interceptors.response.eject(this.respInterceptor);
-    }
-
-    errorConfirmedHandler = () => {
-      this.setState({ error: null });
-    };
-
-    render() {
-      return (
-        <Auxi>
-          <Modal show={this.state.error} modalClosed={this.errorConfirmedHandler}>
-            {this.state.error ? this.state.error.message : null}
-          </Modal>
-          <WrappedComponent {...this.props} />
-        </Auxi>
-      );
-    }
+    return (
+      <Auxi>
+        <Modal show={error} modalClosed={clearError}>
+          {error ? error.message : null}
+        </Modal>
+        <WrappedComponent {...props} />
+      </Auxi>
+    );
   };
 };
 

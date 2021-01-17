@@ -36,17 +36,17 @@ export const logoutSucceed = () => {
 export const checkAuthTimeout = (expirationTime) => {
   return {
     type: actionTypes.AUTH_CHECK_TIMEOUT,
-    expirationTime: expirationTime
+    expirationTime: expirationTime,
   };
 };
 
 export const auth = (email, password, isSignUp) => {
   return {
-    type: actionTypes.AUTH_USER, 
+    type: actionTypes.AUTH_USER,
     email: email,
-    password: password, 
-    isSignup: isSignUp
-  }
+    password: password,
+    isSignup: isSignUp,
+  };
 };
 
 export const setAuthRedirectPath = (path) => {
@@ -58,6 +58,6 @@ export const setAuthRedirectPath = (path) => {
 
 export const authCheckState = () => {
   return {
-    type: actionTypes.AUTH_CHECK_INITIAL_STATE
+    type: actionTypes.AUTH_CHECK_INITIAL_STATE,
   };
 };
