@@ -23,7 +23,7 @@ export function* authUserSaga(action) {
   };
   let url =
     "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDpBya7YrL1BQjL01O0cjZvW5-pwJEvOGE";
-  if (!action.isSignUp) {
+  if (!action.isSignup) {
     url =
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDpBya7YrL1BQjL01O0cjZvW5-pwJEvOGE";
   }
